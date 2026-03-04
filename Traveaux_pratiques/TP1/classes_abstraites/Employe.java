@@ -22,4 +22,14 @@ abstract class Employe {
 
     // Methode abstraite
     public abstract void calculerSalaire();
+
+    // Tostring methode pour affichage des informations de l'employé
+    @Override
+    public String toString() {
+        return "Nom: " + nom + "\n" +
+                "Prénom: " + prenom + "\n" +
+                "Email: " + email + "\n" +
+                "Téléphone: " + telephone + "\n" +
+                "Salaire : " + salaire;
+    }
 }

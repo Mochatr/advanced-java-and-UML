@@ -13,4 +13,11 @@ public class Ingénieur extends Employe {
     public void calculerSalaire(){
         int nvSalaire = getSalaire() + (int)(getSalaire() * 0.15);
         System.out.println("Le salaire de l'ingénieur " + spécialité + " est : " + nvSalaire);
+    }
+
+    // Redefinir la méthode toString pour afficher les informations de l'ingénieur
+    @Override
+    public String toString() {
+        return super.toString() + "\nSpécialité : " + spécialité;
+    }
 }
