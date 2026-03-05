@@ -12,15 +12,15 @@ public class Rectangle extends Figure {
 
     // Methode 1: l'aire du rectangle
     @Override
-    public void calculerAire(){
+    public double calculerAire(){
         double aireRectangle = longueur * largeur;
-        System.out.println("L'aire du rectangle est : " + (int)aireRectangle);
+        return aireRectangle;
     }
 
     // Methode 2: Le perimetre du rectangle
     @Override
-    public void calculerPerimetre(){
+    public double calculerPerimetre(){
         double perimetreRectangle = 2 * (longueur + largeur);
-        System.out.println("Le périmètre du rectangle est : " + (int)perimetreRectangle);
+        return perimetreRectangle;
     }
 }

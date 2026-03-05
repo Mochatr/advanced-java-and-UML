@@ -10,15 +10,15 @@ public class Cercle extends Figure {
 
     // Methode 1: l'Aire du cercle
     @Override
-    public void calculerAire(){
+    public double calculerAire(){
         double aireCercle = Math.PI * Math.pow(rayon, 2);
-        System.out.println("L'aire du cercle est : " + (int)aireCercle);
+        return aireCercle;
     }
 
     // Mathode 2: Le perimetre du cercle
     @Override
-    public void calculerPerimetre(){
+    public double calculerPerimetre(){
         double perimetreCercle = 2 * Math.PI * rayon;
-        System.out.println("Le périmètre du cercle est : " + (int)perimetreCercle);
+        return perimetreCercle;
     }
 }
