@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Étudiant" as Etudiant
+actor "Enseignant" as Prof
+actor "Enseignant Responsable" as Resp
+
+' Héritage : Le responsable est un enseignant avec des droits supplémentaires
+Prof <|-- Resp
+
+rectangle "Système de Réservation Scolaire" {
+  usecase "Consulter le planning des salles" as UC_Planning
+  usecase "Réserver une salle de cours" as UC_ResSalle
+  usecase "Réserver du matériel pédagogique" as UC_ResMat
+  usecase "Consulter son récapitulatif horaire" as UC_Recap
+  usecase "Éditer le récapitulatif de la formation" as UC_EditRecap
+}
+
+' L'étudiant et l'enseignant peuvent consulter le planning
+Etudiant --> UC_Planning
+Prof --> UC_Planning
+
+' Actions spécifiques aux enseignants
+Prof --> UC_ResSalle
+Prof --> UC_ResMat
+Prof --> UC_Recap
+
+' Action spécifique au responsable
+Resp --> UC_EditRecap
+@enduml
