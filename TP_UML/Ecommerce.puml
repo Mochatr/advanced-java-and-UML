@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Visiteur (Non connecté)" as Visiteur
+actor "Client (Connecté)" as Client
+actor Administrateur as Admin
+
+' Un client est un visiteur connecté, il a donc accès à l'exploration
+Visiteur <|-- Client
+
+rectangle "Plateforme E-commerce" {
+  usecase "Explorer les produits et catégories" as UC_Explorer
+  
+  usecase "S'authentifier" as UC_Auth
+  
+  usecase "Gérer le panier (Ajouter, ajuster, etc.)" as UC_Panier
+  usecase "Gérer le compte utilisateur" as UC_Compte
+  usecase "Consulter l'historique des commandes" as UC_Historique
+  usecase "Passer une commande" as UC_Commander
+  
+  usecase "Gérer le catalogue (Produits)" as UC_GererProd
+  usecase "Traiter les commandes" as UC_GererCmd
+  usecase "Gérer les utilisateurs" as UC_GererUsers
+}
+
+' Visiteur
+Visiteur --> UC_Explorer
+
+' Client
+Client --> UC_Panier
+Client --> UC_Compte
+Client --> UC_Historique
+Client --> UC_Commander
+
+' Inclusions (Obligation de s'authentifier)
+UC_Panier .> UC_Auth : <<include>>
+UC_Compte .> UC_Auth : <<include>>
+UC_Historique .> UC_Auth : <<include>>
+UC_Commander .> UC_Auth : <<include>>
+
+' Le passage de commande inclut l'accès au panier
+UC_Commander .> UC_Panier : <<include>>
+
+' Administrateur
+Admin --> UC_GererProd
+Admin --> UC_GererCmd
+Admin --> UC_GererUsers
+Admin .> UC_Auth : <<include>>
+@enduml
