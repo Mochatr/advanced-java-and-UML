@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Client
+actor "Agent de voyage" as Agent
+actor Administrateur as Admin
+
+rectangle "Système de Gestion des Voyages" {
+  ' Cas du client
+  usecase "Consulter les offres de voyages" as UC_Consulter
+  usecase "Réserver un voyage" as UC_Reserver
+  usecase "Consulter l'historique des voyages" as UC_Historique
+  
+  ' Cas de l'agent
+  usecase "Ajouter une offre de voyage" as UC_Ajouter
+  usecase "Modifier les détails d'un voyage" as UC_Modifier
+  usecase "Consulter les réservations clients" as UC_ConsulterRes
+  
+  ' Cas de l'administrateur
+  usecase "Gérer les comptes (clients et agents)" as UC_GererComptes
+  usecase "Assurer la maintenance globale" as UC_Maintenance
+}
+
+Client --> UC_Consulter
+Client --> UC_Reserver
+Client --> UC_Historique
+
+Agent --> UC_Ajouter
+Agent --> UC_Modifier
+Agent --> UC_ConsulterRes
+
+Admin --> UC_GererComptes
+Admin --> UC_Maintenance
+@enduml
